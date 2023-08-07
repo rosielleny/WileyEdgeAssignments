@@ -20,7 +20,3 @@ Welcome to my portfolio showcasing various group projects I have contributed to.
 For more detailed information on each project, including specific code contributions and functionalities, please refer to the dedicated project folders and documentation.
 
 Please note that these projects were collaborative efforts, and my contributions were focused on the specified areas mentioned above.
-
-Thank you for visiting my portfolio. Feel free to contact me at [your.email@example.com](mailto:your.email@example.com) for any inquiries or further details.
-
----
