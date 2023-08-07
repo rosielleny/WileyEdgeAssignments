@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Prescription</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div th:replace="Main/Navbar.html"></div>
+
+    <div class="container">
+        <h1 class="my-4">Update Prescription</h1>
+        <form th:action="@{./updatePrescription}" th:object="${prescription}" method="post">
+            <div class="form-group">
+                <label for="prescriptionId">Select Prescription ID:</label>
+                <select th:field="*{prescriptionId}" id="prescriptionId" class="form-control">
+                    <option th:each="id : ${prescriptionIds}" th:value="${id}" th:text="${id}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="medicationName">Medication Name:</label>
+                <input type="text" id="medicationName" th:field="*{medicationName}" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="dosageInstructions">Dosage Instructions:</label>
+                <input type="text" id="dosageInstructions" th:field="*{dosageInstructions}" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="duration">Duration:</label>
+                <input type="text" id="duration" th:field="*{duration}" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Update Prescription" class="btn btn-primary" />
+            </div>
+        </form>
+        <br><br>
+        <a href="/prescriptions/">Back to Main Page</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

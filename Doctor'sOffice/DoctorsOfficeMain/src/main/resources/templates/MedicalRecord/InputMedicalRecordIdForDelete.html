@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th = "https://thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Medical Records</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- <link th:href="@{/main.css}" rel="stylesheet"> -->
+</head>
+<body>
+	<div th:replace="Main/Navbar.html"></div>
+	<div class="container">
+		<h1>Doctors' Office Medical Record Management System</h1>
+		<hr>
+
+		<!--
+		<form action="/deleteMedicalRecord" th:action="@{./deleteMedicalRecord}" th:object="${medicalRecord}" class="mt-4">
+			<div class="form-group">
+				Select Medical Record to delete:
+				<select th:field="*{medicalRecordId}" class="form-control">
+					<option th:each="medicalRecord : ${medicalRecordInfo}" th:value="${medicalRecord.medicalRecordId}" th:text="${medicalRecord.medicalRecordId}"></option>
+				</select>
+			</div>
+			<input type="submit" value="Delete Medical Record" class="btn btn-danger mt-3">
+		</form>
+		<br>
+		-->
+		
+		<form action="/deleteMedicalRecord" th:action="@{/deleteMedicalRecord}" th:object="${medicalRecord}" class="mt-4" method="post">
+        <div class="form-group">
+            Select Medical Record to delete:
+            <select th:field="*{medicalRecordId}" class="form-control">
+                <option th:each="medicalRecord : ${medicalRecordInfo}" th:value="${medicalRecord.medicalRecordId}" th:text="${medicalRecord.medicalRecordId}"></option>
+            </select>
+        </div>
+        <input type="submit" value="Delete Medical Record" class="btn btn-danger mt-3">
+    </form>
+
+		<div class="mt-3">
+			<a href="/MedicalRecordsMain" class="btn btn-secondary">Back to Medical Records Menu</a>
+		</div>
+		<br>
+
+		<div class="mt-3">
+			<a href="/" class="btn btn-secondary">Main Page</a>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

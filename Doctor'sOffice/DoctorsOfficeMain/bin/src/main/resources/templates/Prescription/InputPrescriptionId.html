@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Prescription ID</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="my-4">Search by Prescription ID</h1>
+    <hr>
+    <form action="./searchPrescriptionById">
+        <div class="form-group">
+            <label for="prescriptionId">Enter Prescription ID:</label>
+            <input type="text" class="form-control" id="prescriptionId" name="prescriptionId">
+        </div>
+        <button type="submit" class="btn btn-primary">Search Prescription</button>
+    </form>
+
+    <div class="mt-3">
+        <a href="/prescriptions/" class="btn btn-secondary">Back to Main Page</a>
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

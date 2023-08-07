@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Records</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div th:replace="Main/Navbar.html"></div>
+    <div class="container-fluid bg-light py-3">
+        <div class="d-flex justify-content-between">
+            <h1 class="m-0">Patient Records</h1>
+            <img src="logo.jpeg" alt="Logo" style="width: 50px; height: 50px;">
+        </div>
+    </div>
+
+	<div class="container my-4">
+		<h2>Patient Details</h2>
+		
+		<table class="table table-bordered">
+		    <tr>
+		        <th>Patient ID</th>
+		        <th>Patient Name</th>
+		        <th>Contact Info</th>
+		        <th>Date of Birth</th>
+		        <th>Medical History</th>
+		    </tr>
+		    <tr th:each="patient : ${patientList}">
+		        <td th:text="${patient.patientId}"></td>
+		        <td th:text="${patient.patientName}"></td>
+		        <td th:text="${patient.contactInfo}"></td>
+		        <td th:text="${patient.dateOfBirth}"></td>
+		        <td th:text="${patient.medicalHistory}"></td>
+		    </tr>
+		</table>
+
+        <br>
+        <br>
+
+	<div class="mt-3">
+        <a href="/patientMainPage">Return to Patient Main Page</a><br>
+        <a href="/">Return to Main Page</a>
+    </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

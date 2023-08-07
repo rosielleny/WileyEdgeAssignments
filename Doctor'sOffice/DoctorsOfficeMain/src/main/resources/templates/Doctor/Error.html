@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Office Management System</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div th:replace="Main/Navbar.html"></div>
+	<div class="container my-4">
+		<h2>ERROR</h2>
+		
+    <div class="form-group">
+        <h1>Oops! Something went wrong.</h1>
+        <p>We apologise for the inconvenience. The page you are looking for cannot be found or encountered an error.</p>
+        <p>Please try again later or contact support for assistance.</p>
+    </div>
+
+    <div class="mt-3">
+        <a href="/doctorMainPage">Return to Doctor Main Page</a><br>
+        <a href="/">Return to Main Page</a>
+    </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

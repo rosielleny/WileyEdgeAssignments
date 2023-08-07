@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Office Management System</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div th:replace="Main/Navbar.html"></div>
+	<div class="container my-4">
+		<h2>Doctor Details</h2>
+		
+         <table class="table table-bordered">
+         	<tr>
+         		<th>Doctor ID</th>
+                <th>Doctor Name</th>
+                <th>Doctor Qualification</th>
+                <th>Doctor Specialty</th>
+                <th>Doctor Gender</th>
+                <th>Doctor Days</th>
+                <th>Doctor Hours</th>
+            </tr>
+            <tr th:each="doctor : ${doctorList}">
+            	<td th:text = "${doctor.docId}"></td>
+            	<td th:text = "${doctor.docName}"></td>
+            	<td th:text = "${doctor.docQualification}"></td>
+            	<td th:text = "${doctor.docSpecialty}"></td>
+            	<td th:text = "${doctor.docGender}"></td>
+            	<td th:text = "${doctor.docDays}"></td>
+            	<td th:text = "${doctor.docHours}"></td>
+            </tr>
+        </table>
+        <br>
+        <br>
+
+	<div class="mt-3">
+        <a href="/doctorMainPage">Return to Doctor Main Page</a><br>
+        <a href="/">Return to Main Page</a>
+    </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

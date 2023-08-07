@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <!-- Add necessary meta tags, title, and stylesheets if needed -->
+</head>
+
+<body>
+    <div th:replace="Main/Navbar.html"></div>
+
+    <div class="container mt-4">
+        <h2>Medical Record Details</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>Medical Record ID</th>
+                <td th:text="${medicalRecord.medicalRecordId}"></td>
+            </tr>
+            <tr>
+                <th>Patient ID</th>
+                <td th:text="${medicalRecord.patientId}"></td>
+            </tr>
+            <tr>
+                <th>Diagnoses</th>
+                <td th:text="${medicalRecord.diagnoses}"></td>
+            </tr>
+            <tr>
+                <th>Treatments</th>
+                <td th:text="${medicalRecord.treatments}"></td>
+            </tr>
+            <tr>
+                <th>Medications</th>
+                <td th:text="${medicalRecord.medications}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

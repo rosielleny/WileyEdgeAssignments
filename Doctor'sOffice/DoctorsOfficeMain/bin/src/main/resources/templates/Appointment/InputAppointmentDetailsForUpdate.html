@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Doctors Office</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    .hidden {
+      display: none;
+    }
+   </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Doctor's Office Appointment Management System</h1>
+        <hr>
+        <form action = "./updateAppointment">
+            <div class="form-group">
+                Enter Appointment ID: <input class="form-control" type="text" name="appointmentID" id="appointmentIdInput">
+            </div>
+            <div class="form-group">
+                Select field to edit:
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="field" value="patient" onclick="showInput('patient')" id="patientRadio">
+                    <label class="form-check-label" for="patientRadio">Patient</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="field" value="date" onclick="showInput('date')" id="dateRadio">
+                    <label class="form-check-label" for="dateRadio">Date and Time</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="field" value="doctor" onclick="showInput('doctor')" id="doctorRadio">
+                    <label class="form-check-label" for="doctorRadio">Doctor</label>
+                </div>
+            </div>
+
+            <div id="inputPatient" class="form-group hidden">
+                <label for="patientIdSelect">Select a new patient:</label>
+                <select class="form-control" name="patientId" id="patientIdSelect">
+                    <option value="">-- Select --</option>
+                    <!-- Use Thymeleaf to iterate over the locationIds and populate the options -->
+                    <option th:each="patientId : ${patientIds}"
+                            th:value="${patientId.split('-')[0].trim()}"
+                            th:text="${patientId}"></option>
+                </select>
+            </div>
+
+            <div id="inputDate" class="form-group hidden">
+                Select date and time: <input class="form-control" type="datetime-local" name="appointmentTime" id="dateTimeInput">
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+                <script>
+                    $(document).ready(function() {
+                    $("#dateInput").datepicker({ dateFormat: "yyyy-mm-dd" });
+                    });
+		        </script>
+            </div>
+
+            <div id="inputDoctor" class="form-group hidden">
+                <label for="doctorIdSelect">Select a new doctor:</label>
+                <select class="form-control" name="doctorId" id="doctorIdSelect">
+                    <option value="">-- Select --</option>
+                    <!-- Using Thymeleaf to iterate over the locationIds and populate the options -->
+                    <option th:each="doctorId : ${doctorIds}"
+                            th:value="${doctorId.split('-')[0].trim()}"
+                            th:text="${doctorId}"></option>
+                </select>
+            </div>
+            <br>
+            <input type = "submit" class="btn btn-primary" value = "Update Appointment">
+    </form>
+
+    <br>
+    <br>
+    <a href="/AppointmentMain" class="btn btn-secondary">Back to Appointments Menu</a>
+    <br>
+    <br>
+    <a href="/" class="btn btn-secondary">Main Page</a>
+    </div>
+
+
+    <script>
+        function showInput(field) {
+            var inputLocation = document.getElementById("inputPatient");
+            var inputDate = document.getElementById("inputDate");
+            var inputSupe = document.getElementById("inputDoctor");
+
+            inputLocation.style.display = "none";
+            inputDate.style.display = "none";
+            inputSupe.style.display = "none";
+
+            if(field === "patient"){
+                inputLocation.style.display = "block";
+            }else if (field === "date"){
+                inputDate.style.display = "block";
+            }else if (field === "doctor"){
+                inputSupe.style.display = "block";
+            }
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#doctorIdSelect").change(function() {
+
+                var selectedLocationId = $(this).val();
+                console.log("Selected Doctor ID: " + selectedSupeId);
+
+            });
+        });
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

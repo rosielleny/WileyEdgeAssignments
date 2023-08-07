@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Medical Record</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div th:replace="Main/Navbar.html"></div>
+        
+    <div class="container mt-4">
+    
+    <!-- Form to input medicalRecordId -->
+        <form action="/medicalrecords/displayMedicalRecordById" method="get">
+            <div class="form-group">
+                <label for="medicalRecordId">Medical Record ID:</label>
+                <input type="text" class="form-control" id="medicalRecordId" name="medicalRecordId" placeholder="Enter Medical Record ID">
+            </div>
+            <button type="submit" class="btn btn-primary">Display Medical Record</button>
+        </form>
+        
+        <h2>Medical Record Details</h2>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Medical Record ID: <span th:text="${medicalRecord.medicalRecordId}"></span></h5>
+                <p class="card-text">Patient ID: <span th:text="${medicalRecord.patientId}"></span></p>
+                <p class="card-text">Diagnoses: <span th:text="${medicalRecord.diagnoses}"></span></p>
+                <p class="card-text">Treatments: <span th:text="${medicalRecord.treatments}"></span></p>
+                <p class="card-text">Medications: <span th:text="${medicalRecord.medications}"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

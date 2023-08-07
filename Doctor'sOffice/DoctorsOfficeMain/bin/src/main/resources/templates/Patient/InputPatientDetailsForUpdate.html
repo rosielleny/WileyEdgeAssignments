@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Patient Records</title>
+<style>
+  .hidden {
+    display: none;
+  }
+</style>
+<script>
+  function showInput(field) {
+    var inputPatient = document.getElementById("inputPatient");
+    var inputDate = document.getElementById("inputDate");
+    var inputDoctor = document.getElementById("inputDoctor");
+    
+    inputPatient.style.display = "none";
+    inputDate.style.display = "none";
+    inputDoctor.style.display = "none";
+    
+    if (field === "patient") {
+      inputPatient.style.display = "block";
+    } else if (field === "date") {
+      inputDate.style.display = "block";
+    } else if (field === "doctor") {
+      inputDoctor.style.display = "block";
+    }
+  }
+</script>
+</head>
+<body>
+	<h1>Doctors' Office Patient Record Management System</h1>
+	<hr>
+	<form action="./updatePatient">
+	  Enter Patient ID: <input type="text" name="patientID" id="patientIdInput"><br><br>
+	  Select field to edit:<br><br>
+    <label>
+      <input type="radio" name="field" value="name" onclick="showInput('patient')"> Patient Name
+    </label>
+    <br>
+    <label>
+      <input type="radio" name="field" value="contact" onclick="showInput('contact')"> Contact Info
+    </label>
+    <br>
+    <label>
+      <input type="radio" name="field" value="dob" onclick="showInput('dob')"> Date of Birth
+    </label>
+    <br>
+    <label>
+      <input type="radio" name="field" value="history" onclick="showInput('history')"> Medical History
+    </label>
+    <br>
+    
+    <div id="inputPatient" class="hidden">
+      Enter new patient name: <input type="text" name="newPatientName" id="patientNameInput"><br><br>
+    </div>
+    
+    <div id="inputContact" class="hidden">
+      Enter new contact info: <input type="text" name="newContactInfo" id="contactInfoInput"><br><br>
+    </div>
+    
+    <div id="inputDOB" class="hidden">
+      Enter new date of birth: <input type="date" name="newDateOfBirth" id="dobInput">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          $("#dobInput").datepicker({ dateFormat: "yyyy-mm-dd" });
+        });
+      </script>
+      <br><br>
+    </div>
+    
+    <div id="inputHistory" class="hidden">
+      Enter new medical history: <input type="text" name="newMedicalHistory" id="historyInput"><br><br>
+    </div>
+    
+    <br>
+    <input type="submit" value="Update Patient">
+  </form>
+	<br>
+	<br>
+	<a href="/PatientsMain">Back to Patients Menu</a>
+	<br>
+	<br>
+	<a href="/">Main Page</a>
+</body>
+</html>
+

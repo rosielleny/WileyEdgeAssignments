@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Records</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+
+</head>
+<body>
+	<div th:replace="Main/Navbar.html"></div>
+    <div class="container">
+        <h1>Doctors' Office Patient Record Management System</h1>
+        <hr>
+
+        <form action="./updatePatient">
+            <div class="form-group">
+                Enter Patient ID: <input type="text" name="patientID" class="form-control" id="patientIdInput"><br><br>
+                Select field to edit:<br><br>
+                <label>
+                    <input type="radio" name="field" value="name" onclick="showInput('patient')"> Patient Name
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="field" value="contact" onclick="showInput('contact')"> Contact Info
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="field" value="dob" onclick="showInput('dob')"> Date of Birth
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="field" value="history" onclick="showInput('history')"> Medical History
+                </label>
+                <br>
+
+                <div id="inputPatient" class="hidden">
+                    Enter new patient name: <input type="text" name="newPatientName" class="form-control" id="patientNameInput"><br><br>
+                </div>
+
+                <div id="inputContact" class="hidden">
+                    Enter new contact info: <input type="text" name="newContactInfo" class="form-control" id="contactInfoInput"><br><br>
+                </div>
+
+                <div id="inputDOB" class="hidden">
+                    Enter new date of birth: <input type="date" name="newDateOfBirth" class="form-control" id="dobInput">
+                    <br><br>
+                </div>
+
+                <div id="inputHistory" class="hidden">
+                    Enter new medical history: <input type="text" name="newMedicalHistory" class="form-control" id="historyInput"><br><br>
+                </div>
+
+                <br>
+                <input type="submit" value="Update Patient" class="btn btn-primary">
+            </div>
+        </form>
+
+        <div class="mt-3">
+            <a href="/patient-main" class="btn btn-secondary">Back to Patients Menu</a>
+        </div>
+        <br>
+        <div class="mt-3">
+            <a href="/" class="btn btn-secondary">Main Page</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      function showInput(field) {
+        var inputPatient = document.getElementById("inputPatient");
+        var inputDate = document.getElementById("inputDate");
+        var inputDoctor = document.getElementById("inputDoctor");
+
+        inputPatient.style.display = "none";
+        inputDate.style.display = "none";
+        inputDoctor.style.display = "none";
+
+        if (field === "patient") {
+          inputPatient.style.display = "block";
+        } else if (field === "date") {
+          inputDate.style.display = "block";
+        } else if (field === "doctor") {
+          inputDoctor.style.display = "block";
+        }
+      }
+    </script>
+</body>
+</html>
+

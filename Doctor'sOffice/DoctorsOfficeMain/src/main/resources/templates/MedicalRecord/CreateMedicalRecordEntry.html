@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Records</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div th:replace="Main/Navbar.html"></div>
+    <div class="container-fluid bg-light">
+        <div class="row py-3">
+            <div class="col-9">
+                <h1>Medical Records</h1>
+            </div>
+            <div class="col-3 text-right">
+                <img src = "logo.jpeg" alt = "Logo" style = "width: 50px; height: 50px;">
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/doctorMainPage">Doctors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/patientMainPage">Patients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/medicalrecord">Medical Record</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/appointments">Appointments</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <h2>Create a Medical Record Entry</h2>
+
+     <!--   
+     <form th:action="@{/createMedicalRecordEntry}" method="post" th:object="${medicalRecord}"
+              onsubmit="return confirm('Are you sure you want to add this entry?')">  
+              -->
+         
+         <form th:action="@{/medicalRecords}" method="post" th:object="${medicalRecord}"
+      onsubmit="return confirm('Are you sure you want to add this entry?')">     
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="patientId">Patient ID:</label>
+                        <input type="text" class="form-control" th:field="*{patientId}" id="patientId">
+                    </div>
+                    <div class="form-group">
+                        <label for="diagnoses">Diagnoses:</label>
+                        <input type="text" class="form-control" th:field="*{diagnoses}" id="diagnoses">
+                    </div>
+					<div class="form-group">
+					    <label for="treatments">Treatments:</label>
+					    <input type="text" class="form-control" th:field="*{treatments}" id="treatments">
+					</div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="medications">Medications:</label>
+                        <input type="text" class="form-control" th:field="*{medications}" id="medications">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group text-right">
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
+        </form>
+
+        <div class="text-right">
+            <a href="/medicalRecordMainPage" class="btn btn-secondary">Cancel</a>
+            <a href="/updateMedicalRecordEntryForm" class="btn btn-secondary">Update a Medical Record Entry</a>
+            <a href="/deleteMedicalRecordEntryForm" class="btn btn-secondary">Delete a Medical Record Entry</a>
+            <a href="/" class="btn btn-secondary">Return to Main Menu</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

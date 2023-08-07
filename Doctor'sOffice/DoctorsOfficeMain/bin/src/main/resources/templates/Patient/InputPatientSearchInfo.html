@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+    <title>Doctors Office</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function showInput(field) {
+            var inputPatient = document.getElementById("inputPatient");
+            var inputDate = document.getElementById("inputDate");
+            var inputDoctor = document.getElementById("inputDoctor");
+            var inputId = document.getElementById("inputId");
+
+            inputPatient.style.display = "none";
+            inputDate.style.display = "none";
+            inputDoctor.style.display = "none";
+            inputId.style.display = "none";
+
+            if (field === "patient") {
+                inputPatient.style.display = "block";
+            } else if (field === "date") {
+                inputDate.style.display = "block";
+            } else if (field === "doctor") {
+                inputDoctor.style.display = "block";
+            } else if (field === "id") {
+                inputId.style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Doctors' Office Appointment Management System</h1>
+    <hr>
+    <form action="./searchPatient">
+        Select option:<br><br>
+        <label>
+            <input type="radio" name="field" value="patient" onclick="showInput('patient')"> Search by Patient
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="field" value="date" onclick="showInput('date')"> Search by Date
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="field" value="doctor" onclick="showInput('doctor')"> Search by Doctor
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="field" value="id" onclick="showInput('id')"> Search by Appointment ID
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="field" value="all" onclick="showInput('all')"> Show All Patients
+        </label>
+
+        <div id="inputPatient" class="hidden">
+            <label for="patientIdSelect">Select a patient:</label>
+            <select name="patientId" id="patientIdSelect">
+                <option value="">-- Select --</option>
+                <option th:each="patient : ${patientInfo}"
+                        th:value="${patient.patientId}"
+                        th:text="${patient.patientName}"></option>
+            </select>
+        </div>
+
+        <div id="inputDate" class="hidden">
+            Select date: <input type="date" name="date" id="dateInput">
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $("#dateInput").datepicker({ dateFormat: "yyyy-mm-dd" });
+                });
+            </script>
+        </div>
+
+        <div id="inputDoctor" class="hidden">
+            <label for="doctorIdSelect">Select a doctor:</label>
+            <select name="doctorId" id="doctorIdSelect">
+                <option value="">-- Select --</option>
+                <option th:each="doctor : ${doctorInfo}"
+                        th:value="${doctor.doctorId}"
+                        th:text="${doctor.doctorName}"></option>
+            </select>
+        </div>
+
+        <div id="inputId" class="hidden">
+            Enter Patient ID: <input type="text" name="patientID" id="patientIdInput"><br><br>
+        </div>
+        <br>
+        <br>
+        <input type="submit" value="Search Patients">
+    </form>
+	<br>
+	<br>
+	<a href="/PatientsMain">Back to Patients Menu</a>
+	<br>
+	<br>
+	<a href="/">Main Page</a>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th = "https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Records</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+</head>
+<body>
+	<div th:replace="Main/Navbar.html"></div>
+    <div class="container">
+        <h1>Doctors' Office Medical Record Management System</h1>
+        <hr>
+
+        <form action="./updateMedicalRecord" class="mt-4">
+            <div class="form-group">
+                Enter Medical Record ID: <input type="text" name="medicalRecordId" id="medicalRecordIdInput" class="form-control">
+            </div>
+
+            <div class="form-group">
+                Select field to edit:
+                <div class="form-check">
+                    <input type="radio" name="field" value="diagnoses" onclick="showInput('diagnoses')" class="form-check-input">
+                    <label class="form-check-label">Diagnoses</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="field" value="treatments" onclick="showInput('treatments')" class="form-check-input">
+                    <label class="form-check-label">Treatments</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="field" value="medications" onclick="showInput('medications')" class="form-check-input">
+                    <label class="form-check-label">Medications</label>
+                </div>
+            </div>
+
+            <div id="inputDiagnoses" class="form-group hidden">
+                Enter New Diagnoses: <input type="text" name="newDiagnoses" id="diagnosesInput" class="form-control">
+            </div>
+
+            <div id="inputTreatments" class="form-group hidden">
+                Enter New Treatments: <input type="text" name="newTreatments" id="treatmentsInput" class="form-control">
+            </div>
+
+            <div id="inputMedications" class="form-group hidden">
+                Enter New Medications: <input type="text" name="newMedications" id="medicationsInput" class="form-control">
+            </div>
+
+            <input type="submit" value="Update Medical Record" class="btn btn-primary mt-3">
+        </form>
+        <br>
+
+        <div class="mt-3">
+            <a href="/MedicalRecordsMain" class="btn btn-secondary">Back to Medical Records Menu</a>
+        </div>
+        <br>
+
+        <div class="mt-3">
+            <a href="/" class="btn btn-secondary">Main Page</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Office Management System</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div th:replace="Main/Navbar.html"></div>
+    <div class="container my-4">
+        <h2>Doctors</h2>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>Doctor ID</th>
+                <th>Name</th>
+                <th>Qualification</th>
+                <th>Specialty</th>
+                <th>Gender</th>
+                <th>Working Days</th>
+                <th>Working Hours</th>
+            </tr>
+            <tr th:each="doctor : ${doctorList}">
+                <td th:text="${doctor.docId}"></td>
+                <td th:text="${doctor.docName}"></td>
+                <td th:text="${doctor.docQualification}"></td>
+                <td th:text="${doctor.docSpecialty}"></td>
+                <td th:text="${doctor.docGender}"></td>
+                <td th:text="${doctor.docDays}"></td>
+                <td th:text="${doctor.docHours}"></td>
+            </tr>
+        </table>
+        <br>
+        <br>
+
+        <div class="text-center">
+            <a href="/createDoctorEntryForm" class="btn btn-info">Add a Doctor Entry</a>
+            <a href="/updateDoctorEntryForm" class="btn btn-info">Update a Doctor Entry</a>
+            <a href="/deleteDoctorEntryForm" class="btn btn-info">Delete a Doctor Entry</a>
+            <a href="/displayDoctorById" class="btn btn-info">Search Doctor by ID</a>
+            <a href="/displayDoctorByName" class="btn btn-info">Search Doctor by Name</a>
+            <a href="/doctorMainPage" class="btn btn-info">Return to Doctor Main Page</a>
+            <a href="/" class="btn btn-info">Return to Main Page</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

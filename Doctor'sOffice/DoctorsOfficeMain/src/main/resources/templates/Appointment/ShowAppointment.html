@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Doctor's Office</title>
+	<!-- <link th:href="@{/main.css}" rel="stylesheet"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	<div th:replace="Main/Navbar.html"></div>
+	<div class="container">
+		<h1 class="my-4">Doctors' Office Appointment Management System</h1>
+		<hr>
+		<table class="table table-bordered">
+			<thead>
+			<tr>
+				<th>AppointmentId</th>
+				<th>Patient</th>
+				<th>Doctor</th>
+				<th>Date and Time</th>
+				<th>Status</th>
+				<th>Additional Notes</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="appointment : ${appointmentInfo}">
+				<td th:text="${appointment.appointmentId}"></td>
+				<td th:text="${appointment.patientName}"></td>
+				<td th:text="${appointment.doctorName}"></td>
+				<td th:text="${appointment.appointmentTime}"></td>
+				<td th:text="${appointment.appointmentStatus}"></td>
+				<td th:text="${appointment.additionalNotes}"></td>
+			</tr>
+			</tbody>
+		</table>
+
+		<br>
+		<a href="./InputAppointmentSearchInfo" class="btn btn-primary">Search</a>
+		<br>
+		<br>
+		<a href="/appointment-main/" class="btn btn-secondary">Back to Appointments Menu</a>
+		<br>
+		<br>
+		<a href="/" class="btn btn-secondary">Main Page</a>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</body>
+</html>

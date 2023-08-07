@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <!-- Add necessary meta tags, title, and stylesheets if needed -->
+</head>
+
+<body>
+    <div th:replace="Main/Navbar.html"></div>
+
+    <div class="container mt-4">
+        <h2>Error</h2>
+        <p th:text="${error}"></p>
+        <a href="/medicalrecords" class="btn btn-secondary">Go Back</a>
+        <a href="/" class="btn btn-secondary">Return to Main Page</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

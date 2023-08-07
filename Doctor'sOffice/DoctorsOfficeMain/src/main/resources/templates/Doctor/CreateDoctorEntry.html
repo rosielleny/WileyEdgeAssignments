@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Office Management System</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div th:replace="Main/Navbar.html"></div>
+    <div class="container my-4">
+        <h2>Create a Doctor Entry</h2>
+
+        <form th:action="@{/createDoctorEntry}" method="post" th:object="${doctor}"
+              onsubmit="return confirm('Are you sure you want to add this entry?')">
+            <input type="hidden" th:field="*{docId}">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="docName">Name:</label>
+                        <input type="text" class="form-control" th:field="*{docName}" id="docName">
+                    </div>
+                    <div class="form-group">
+                        <label for="docQualification">Qualification:</label>
+                        <input type="text" class="form-control" th:field="*{docQualification}" id="docQualification">
+                    </div>
+                    <div class="form-group">
+                        <label for="docSpecialty">Specialty:</label>
+                        <input type="text" class="form-control" th:field="*{docSpecialty}" id="docSpecialty">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="docGender">Gender:</label>
+                        <input type="text" class="form-control" th:field="*{docGender}" id="docGender">
+                    </div>
+                    <div class="form-group">
+                        <label for="docDays">Working Days:</label>
+                        <input type="text" class="form-control" th:field="*{docDays}" id="docDays">
+                    </div>
+                    <div class="form-group">
+                        <label for="docHours">Working Hours:</label>
+                        <input type="text" class="form-control" th:field="*{docHours}" id="docHours">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group text-right">
+                <button type="button" class="btn btn-primary" id="submitDoctorForm">Submit</button>
+            </div>
+        </form>
+
+        <div class="text-right">
+            <a href="/doctorMainPage" class="btn btn-secondary">Cancel</a>
+            <a href="/updateDoctorEntryForm" class="btn btn-secondary">Update a Doctor Entry</a>
+            <a href="/deleteDoctorEntryForm" class="btn btn-secondary">Delete a Doctor Entry</a>
+            <a href="/" class="btn btn-secondary">Return to Main Menu</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#submitDoctorForm").click(function () {
+                var doctorData = {
+                    docName: $("#docName").val(),
+                    docQualification: $("#docQualification").val(),
+                    docSpecialty: $("#docSpecialty").val(),
+                    docGender: $("#docGender").val(),
+                    docDays: $("#docDays").val(),
+                    docHours: $("#docHours").val()
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/createDoctorEntry",
+                    contentType: "application/json",
+                    data: JSON.stringify(doctorData),
+                    success: function (response) {
+                        window.location.href = "/doctorMainPage";
+                    },
+                    error: function (error) {
+                        console.error("Error creating doctor entry:", error);
+                        alert("Failed to create the doctor entry.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

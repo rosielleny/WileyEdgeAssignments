@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Office Management System</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div th:replace="Main/Navbar.html"></div>
+    <div class="container my-4">
+        <h2>Delete a Doctor Entry</h2>
+
+        <form id="deleteDoctorForm">
+            <div class="form-group">
+                <label for="docIdSelect">Select Doctor ID:</label>
+                <select class="form-control" id="docIdSelect">
+                    <option value="">-- Select --</option>
+                    <option th:each="doctor : ${doctorIds}" th:value="${doctor}" th:text="${doctor}"></option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-danger">Submit</button>
+        </form>
+        <br>
+
+        <div class="text-right">
+            <a href="/doctorMainPage" class="btn btn-secondary">Cancel</a>
+            <a href="/" class="btn btn-secondary">Return to Main Page</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById("deleteDoctorForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const docIdSelect = document.getElementById("docIdSelect");
+            const selectedDocId = docIdSelect.value;
+
+            if (selectedDocId === "") {
+                return;
+            }
+
+            fetch(`/deleteDoctorEntry?docId=${selectedDocId}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = "/doctorMainPage";
+                } else {
+                }
+            })
+            .catch(error => {
+            });
+        });
+    </script>
+</body>
+
+</html>

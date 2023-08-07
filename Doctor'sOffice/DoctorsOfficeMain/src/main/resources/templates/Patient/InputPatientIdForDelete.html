@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th = "https://thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Patient Records</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- <link th:href="@{/main.css}" rel="stylesheet"> -->
+</head>
+<body>
+	<div th:replace="Main/Navbar.html"></div>
+	<div class="container">
+		<h1>Doctors' Office Patient Record Management System</h1>
+		<hr>
+
+		<form action="/deletePatient" th:action="@{./deletePatient}" th:object="${patient}">
+			<div class="form-group">
+				Select patient to delete:
+				<select class="form-control" th:field="*{patientId}">
+					<option th:each="patient : ${patientInfo}" th:value="${patient.patientId}" th:text="${patient.patientName}"></option>
+				</select>
+				<br><br>
+				<input type="submit" value="Delete Patient" class="btn btn-danger">
+			</div>
+		</form>
+
+		<div class="mt-3">
+			<a href="/patient-main" class="btn btn-secondary">Back to Patients Menu</a>
+		</div>
+		<br>
+		<div class="mt-3">
+			<a href="/" class="btn btn-secondary">Main Page</a>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

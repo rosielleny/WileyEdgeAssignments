@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Office Management System</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+<div th:replace="Main/Navbar.html"></div>
+<div class="container">
+    <h2 class="mt-4">Update a Doctor Entry</h2>
+
+    <form action="/updateDoctorEntry" th:object="${doctor}" th:method="post"
+          onsubmit="return confirm('Are you sure you want to update this entry?')">
+
+        <div class="form-group">
+            <label for="docId">Select Doctor's ID Number:</label>
+            <select class="form-control" id="docId" th:field="*{docId}">
+                <option th:each="docId : ${docIds}" th:value="${docId}" th:text="${docId}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="docName">Name:</label>
+            <input type="text" class="form-control" id="docName" th:field="*{docName}">
+        </div>
+
+        <div class="form-group">
+            <label for="docQualification">Qualification:</label>
+            <input type="text" class="form-control" id="docQualification" th:field="*{docQualification}">
+        </div>
+
+        <div class="form-group">
+            <label for="docSpecialty">Specialty:</label>
+            <input type="text" class="form-control" id="docSpecialty" th:field="*{docSpecialty}">
+        </div>
+
+        <div class="form-group">
+            <label for="docGender">Gender:</label>
+            <input type="text" class="form-control" id="docGender" th:field="*{docGender}">
+        </div>
+
+        <div class="form-group">
+            <label for="docDays">Working Days:</label>
+            <input type="text" class="form-control" id="docDays" th:field="*{docDays}">
+        </div>
+
+        <div class="form-group">
+            <label for="docHours">Working Hours:</label>
+            <input type="text" class="form-control" id="docHours" th:field="*{docHours}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="mt-3">
+        <a href="/doctorMainPage" class="btn btn-secondary">Cancel</a>
+        <br>
+        <a href="/" class="btn btn-secondary mt-2">Return to Main Menu</a>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

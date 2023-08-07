@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th = "https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Records</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+	<div th:replace="Main/Navbar.html"></div>
+    <div class="container">
+        <h1>Doctors' Office Appointment Management System</h1>
+        <hr>
+
+        <form action="./searchPatient">
+            <div class="form-group">
+                Select option:<br><br>
+                <label class="form-check-label">
+                    <input type="radio" name="field" value="patient" onclick="showInput('patient')" class="form-check-input"> Search by Patient
+                </label>
+                <br>
+                <label class="form-check-label">
+                    <input type="radio" name="field" value="date" onclick="showInput('date')" class="form-check-input"> Search by Date
+                </label>
+                <br>
+                <label class="form-check-label">
+                    <input type="radio" name="field" value="doctor" onclick="showInput('doctor')" class="form-check-input"> Search by Doctor
+                </label>
+                <br>
+                <label class="form-check-label">
+                    <input type="radio" name="field" value="id" onclick="showInput('id')" class="form-check-input"> Search by Appointment ID
+                </label>
+                <br>
+                <label class="form-check-label">
+                    <input type="radio" name="field" value="all" onclick="showInput('all')" class="form-check-input"> Show All Patients
+                </label>
+            </div>
+
+            <div id="inputPatient" class="hidden form-group">
+                <label for="patientIdSelect">Select a patient:</label>
+                <select name="patientId" id="patientIdSelect" class="form-control">
+                    <option value="">-- Select --</option>
+                    <option th:each="patient : ${patientInfo}"
+                            th:value="${patient.patientId}"
+                            th:text="${patient.patientName}"></option>
+                </select>
+            </div>
+
+            <div id="inputDate" class="hidden form-group">
+                <label for="dateInput">Select date:</label>
+                <input type="date" name="date" id="dateInput" class="form-control">
+            </div>
+
+            <div id="inputDoctor" class="hidden form-group">
+                <label for="doctorIdSelect">Select a doctor:</label>
+                <select name="doctorId" id="doctorIdSelect" class="form-control">
+                    <option value="">-- Select --</option>
+                    <option th:each="doctor : ${doctorInfo}"
+                            th:value="${doctor.doctorId}"
+                            th:text="${doctor.doctorName}"></option>
+                </select>
+            </div>
+
+            <div id="inputId" class="hidden form-group">
+                <label for="patientIdInput">Enter Patient ID:</label>
+                <input type="text" name="patientID" id="patientIdInput" class="form-control"><br>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Search Patients" class="btn btn-primary">
+            </div>
+        </form>
+
+        <div class="mt-3">
+            <a href="/patient-main" class="btn btn-secondary">Back to Patients Menu</a>
+        </div>
+        <br>
+        <div class="mt-3">
+            <a href="/" class="btn btn-secondary">Main Page</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function showInput(field) {
+            var inputPatient = document.getElementById("inputPatient");
+            var inputDate = document.getElementById("inputDate");
+            var inputDoctor = document.getElementById("inputDoctor");
+            var inputId = document.getElementById("inputId");
+
+            inputPatient.style.display = "none";
+            inputDate.style.display = "none";
+            inputDoctor.style.display = "none";
+            inputId.style.display = "none";
+
+            if (field === "patient") {
+                inputPatient.style.display = "block";
+            } else if (field === "date") {
+                inputDate.style.display = "block";
+            } else if (field === "doctor") {
+                inputDoctor.style.display = "block";
+            } else if (field === "id") {
+                inputId.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
