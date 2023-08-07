@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Details</title>
+</head>
+
+<body>
+    <div style="display: flex; justify-content: space-between; background-color: #f0f0f0; padding: 10px;">
+        <h1 style="margin: 0;">Doctor's Office Management System</h1>
+        <img src="logo.png" alt="Logo" style="width: 50px; height: 50px;">
+    </div>
+
+    <div style="background-color: #333; padding: 10px;">
+        <a href="/" style="color: #fff; margin-right: 10px;">Home Page</a>
+        <a href="/doctorMainPage" style="color: #fff; margin-right: 10px;">Doctors</a>
+        <a href="/patients" style="color: #fff; margin-right: 10px;">Patients</a>
+        <a href="/medicalrecord" style="color: #fff; margin-right: 10px;">Medical Record</a>
+        <a href="/appointments" style="color: #fff; margin-right: 10px;">Appointments</a>
+    </div>
+
+    <h2 style="margin: 20px 0 10px 10px;">Doctor Details</h2>
+
+    <div th:if="${doctorList != null and doctorList.size() > 0}">
+        <table border="1" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Doctor ID</th>
+                    <th>Doctor Name</th>
+                    <th>Doctor Qualification</th>
+                    <th>Doctor Specialty</th>
+                    <th>Doctor Gender</th>
+                    <th>Doctor Days</th>
+                    <th>Doctor Hours</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="doctor : ${doctorList}">
+                    <td th:text = "${doctor.docId}"></td>
+		            <td th:text = "${doctor.docName}"></td>
+		            <td th:text = "${doctor.docQualification}"></td>
+		            <td th:text = "${doctor.docSpecialty}"></td>
+		            <td th:text = "${doctor.docGender}"></td>
+		            <td th:text = "${doctor.docDays}"></td>
+		            <td th:text = "${doctor.docHours}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:unless="${doctorList != null and doctorList.size() > 0}">
+        <p>No doctors found with the specified name.</p>
+    </div>
+
+    <div style="text-align: left; float: right;">
+        <a href="/doctorMainPage">Return to Doctor Main Page</a><br>
+        <a href="/">Return to Main Page</a>
+    </div>
+</body>
+
+</html>

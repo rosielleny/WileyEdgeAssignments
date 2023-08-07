@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Office Management System</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container-fluid bg-light py-3">
+        <div class="d-flex justify-content-between">
+            <h1 class="m-0">Doctor's Office Management System</h1>
+            <img src="logo.png" alt="Logo" style="width: 50px; height: 50px;">
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/doctors">Doctors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/patients">Patients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/medicalrecord">Medical Record</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/appointments">Appointments</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 style="margin: 20px 0 10px 10px;">Doctors Main Page</h2>
+
+        <div class="row mt-3">
+            <div class="col-md-3 text-center">
+                <a href="/displayAllDoctors" class="icon-link">
+                    <i class="fas fa-list-alt fa-4x"></i>
+                    <p>Display All Doctors</p>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="/viewDoctorById" class="icon-link">
+                    <i class="fas fa-search fa-4x"></i>
+                    <p>Search Doctor by ID</p>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="/viewDoctorByName" class="icon-link">
+                    <i class="fas fa-search fa-4x"></i>
+                    <p>Search Doctor by Name</p>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="/createDoctorEntryForm" class="icon-link">
+                    <i class="fas fa-plus-circle fa-4x"></i>
+                    <p>Create a Doctor Entry</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-3 text-center">
+                <a href="/updateDoctorEntryForm" class="icon-link">
+                    <i class="fas fa-edit fa-4x"></i>
+                    <p>Update a Doctor Entry</p>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="/deleteDoctorEntryForm" class="icon-link">
+                    <i class="fas fa-trash-alt fa-4x"></i>
+                    <p>Delete a Doctor Entry</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <a href="/" class="btn btn-secondary">Return to Main Page</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
