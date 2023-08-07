@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Superpower</title>
+</head>
+<body>
+    <h1>Update Superpower</h1>
+    <form action="@{/UpdateSuperpower/{supeID}{supeId=${supe.supeId}" method="post">
+        <label for="supeId">Supe ID:</label>
+        <input type="text" id="supeId" name="supeID" placeholder="Supe ID" required><br><br>
+        <label for="superpower">Superpower: </label>
+        <input type="text" id="superpower" name="superpower" placeholder="Superpower" required><br><br>
+        <button type="submit">Update</button>
+    </form>
+    <br><br>
+    <a href="/menuPage">Go To Main Page</a>
+</body>
+</html>

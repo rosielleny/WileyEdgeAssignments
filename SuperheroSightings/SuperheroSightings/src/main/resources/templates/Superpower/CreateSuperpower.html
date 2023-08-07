@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Add new Superpower</title>
+</head>
+<body>
+    <h1>Create New Superpower</h1>
+    <hr>
+    <form action="/addSuperpowerForm" method="post">
+        <label for="supeId">Supe ID:</label>
+        <input type="text" id="supeId" name="supeId" required><br><br>
+        <label for="superpower">Superpower:</label>
+        <input type="text" id="superpower" name="superpower" required><br><br>
+        <input type="submit" value="Create Superpower">
+    </form>
+    <br><br>
+    <br>
+    <br>
+    <a href="/superPowerDetails">Back to Superpowers Menu</a>
+    <br>
+    <br>
+    <a href="/">Back to Main Page</a>
+</body>
+</html>

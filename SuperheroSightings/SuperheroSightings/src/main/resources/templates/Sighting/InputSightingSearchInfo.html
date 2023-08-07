@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Superhero Sightings</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function showInput(field) {
+            var inputLocation = document.getElementById("inputLocation");
+            var inputDate = document.getElementById("inputDate");
+            var inputSupe = document.getElementById("inputSupe");
+            var inputId = document.getElementById("inputId");
+
+            inputLocation.style.display = "none";
+            inputDate.style.display = "none";
+            inputSupe.style.display = "none";
+            inputId.style.display = "none";
+
+            if (field === "location") {
+                inputLocation.style.display = "block";
+            } else if (field === "date") {
+                inputDate.style.display = "block";
+            } else if (field === "supe") {
+                inputSupe.style.display = "block";
+            } else if (field === "id") {
+                inputId.style.display = "block";
+            }
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#supeIdSelect").change(function() {
+
+                var selectedLocationId = $(this).val();
+               // console.log("Selected Supe ID: " + selectedSupeId);
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Superhero Sightings</h1>
+    <hr>
+    <form action="./searchSighting">
+        Select option:<br><br>
+        <label>
+            <input type="radio" name="field" value="location" onclick="showInput('location')"> Search by Location
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="field" value="date" onclick="showInput('date')"> Search by Date
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="field" value="supe" onclick="showInput('supe')"> Search by Superhero/villain
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="field" value="id" onclick="showInput('id')"> Search by Sighting ID
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="field" value="all" onclick="showInput('all')"> Show All Sightings
+        </label>
+
+        <div id="inputLocation" class="hidden">
+            <label for="locationIdSelect">Select a Location:</label>
+            <select name="locationId" id="locationIdSelect">
+                <option value="">-- Select --</option>
+                <option th:each="locationId : ${locationIds}"
+                        th:value="${locationId.split('-')[0].trim()}"
+                        th:text="${locationId}"></option>
+            </select>
+        </div>
+
+        <div id="inputDate" class="hidden">
+            Select date: <input type="date" name="date" id="dateInput">
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $("#dateInput").datepicker({ dateFormat: "yyyy-mm-dd" });
+                });
+            </script>
+        </div>
+
+        <div id="inputSupe" class="hidden">
+            <label for="supeIdSelect">Select a new superhero/villain:</label>
+            <select name="supeId" id="supeIdSelect">
+                <option value="">-- Select --</option>
+                
+                <option th:each="supeId : ${supeIds}"
+                        th:value="${supeId.split('-')[0].trim()}"
+                        th:text="${supeId}"></option>
+            </select>
+        </div>
+
+        <div id="inputId" class="hidden">
+            Enter Sighting ID: <input type="text" name="sightingID" id="sightingIdInput"><br><br>
+        </div>
+		<br>
+        <br>
+        <input type="submit" value="Search Sightings">
+    </form>
+	<br>
+	<br>
+	<a href="/SightingMain">Back to Sighting Menu</a>
+	<br>
+	<br>
+	<a href="/">Main Page</a>
+</body>
+</html>

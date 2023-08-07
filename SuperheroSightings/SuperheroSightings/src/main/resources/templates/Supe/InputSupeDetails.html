@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Create Superhero or Supervillain</title>
+    <style type="text/css">
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create Superhero or Supervillain</h1>
+    <hr>
+    <form action="/addSupe" method="post" th:object="${supe}">
+        <label for="supeName">Enter Superhero or Supervillain Name:</label>
+        <input type="text" id="supeName" name="supeName" th:field="*{supeName}" required>
+        <p th:if="${#fields.hasErrors('supeName')}" th:errors="*{supeName}" class="error">Name Error</p>
+        <br><br>
+        <label for="supePower">Enter Superhero or Supervillain Power:</label>
+        <input type="text" id="supePower" name="supePower" th:field="*{supePower}" required>
+        <p th:if="${#fields.hasErrors('supePower')}" th:errors="*{supePower}" class="error">Power Error</p>
+        <br><br>
+        <label for="supeDescription">Enter Superhero or Supervillain Description:</label>
+        <input type="text" id="supeDescription" name="supeDescription" th:field="*{supeDescription}">
+        <br><br>
+        <input type="submit" value="Save Superhero or Supervillain">
+    </form>
+    <br><br>
+    <a href="/supesIndex">Back to Superheroes and Supervillains Menu</a>
+    <br>
+    <a href="/supesIndex">Cancel</a>
+    <br>
+    <a href="/">Go to Home Page</a>
+</body>
+</html>

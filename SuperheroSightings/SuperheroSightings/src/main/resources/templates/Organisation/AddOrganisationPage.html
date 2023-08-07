@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Superhero Management System</title>
+</head>
+
+<body>
+    <h1>Add an Organisation</h1>
+
+    <form th:action = "@{/addOrganisation}" method = "post" th:object = "${organisation}"
+    		onsubmit = "return confirm ('Are you sure you want to add this entry?')">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type = "text" th:field = "*{organisationName}"></td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td><input type = "text" th:field = "*{organisationAddress}"></td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td><input type = "text" th:field = "*{organisationDescription}"></td>
+            </tr>
+            <tr>
+                <td>Contact Information:</td>
+                <td><input type = "text" th:field = "*{organisationContactInfo}"></td>
+            </tr>
+            <tr>
+                <td colspan = "2">
+                    <input type = "submit" value = "Add Organisation">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br>
+
+	<a href = "/organisationDetails">Cancel</a>
+    <br>
+    <a href = "/updateOrganisationForm">Update an Organisation Entry</a>
+    <br>
+    <a href = "/deleteOrganisationForm">Delete an Organisation Entry</a>
+    <br>
+    <a href = "/">Return to Main Menu</a>
+</body>
+</html>

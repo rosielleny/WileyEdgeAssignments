@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Superhero Management System</title>
+</head>
+
+<body>
+    <h1>Update an Organisation Entry</h1>
+    
+    <form action = "#" th:action = "@{./updateOrganisation}" th:object = "${organisation}"
+    	onsubmit = "return confirm ('Are you sure you want to update this entry?')">
+    
+    	Select Organisation ID :
+        <select th:field = "*{organisationId}">
+            <option th:each = "organisationId : ${organisationIds}" th:value = "${organisationId}" th:text = "${organisationId}"></option>
+        </select>
+        <br>
+
+        <label for = "organisationName">Organisation Name:</label>
+        <input type = "text" id = "organisationName" name = "organisationName" required>
+        <br>
+
+        <label for = "organisationDescription">Organisation Description:</label>
+        <input type = "text" id = "organisationDescription" name = "organisationDescription" required>
+        <br>
+
+        <label for = "organisationAddress">Organisation Address:</label>
+        <input type = "text" id = "organisationAddress" name = "organisationAddress" required>
+        <br>
+
+        <label for = "organisationContactInfo">Organisation Contact Info:</label>
+        <input type = "text" id = "organisationContactInfo" name = "organisationContactInfo" required>
+        <br>
+    
+    	<input type = "submit" value = "Update Organisation">
+    </form>
+    <br>
+    
+    <a href = "/organisationDetails">Cancel</a>
+    <br>
+    <a href = "/">Return to Main Menu</a>
+</body>
+</html>

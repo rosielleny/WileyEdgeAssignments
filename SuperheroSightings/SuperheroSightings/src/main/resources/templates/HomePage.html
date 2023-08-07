@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+    <title>Superhero Management System</title>
+</head>
+<body>
+    <h1>Welcome to the Superhero and Supervillain Management System</h1>
+    
+    <h2>About</h2>
+    <p>This application allows you to view, edit and update the database of superheroes and supervillians as well as their organisations.</p>
+        <p>Here you can also record a sighting of a superhero or villain and update their location</p>
+    <br>
+    
+    <h3>Navigation</h3>
+    <ul>
+		<li><a href = "/supesIndex">Superhero and Supervillian Details</a>
+        <li><a href = "/organisationDetails">Organisation Details</a>
+        <li><a href = "/locationDetails">Location Details</a>
+		<li><a href = "/SightingMain">Sighting Details</a>
+        <li><a href = "/superPowerDetails">Superpower Details</a>
+    </ul>
+    
+    <br>
+    <h3>Newsfeed</h3>
+    
+    <div th:each="sighting : ${sightingInfo}">
+    <a th:href="@{'./searchSighting?field=id&locationId=&date=&supeId=&sightingID=' + ${sighting.sightingId}}">
+        <p th:text="${sighting.supeName + ' seen at ' + sighting.locationName}"></p>
+    </a>
+	</div>
+
+</body>
+</html>

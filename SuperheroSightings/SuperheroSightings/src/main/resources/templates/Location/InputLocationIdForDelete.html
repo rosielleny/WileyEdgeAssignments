@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+</head>
+<body>
+    <h1>SuperHero Sightings</h1>
+    <hr>
+    <h2 th:text="'Welcome to SuperHero Locations !'"></h2>
+    <hr>
+    <form action="#" th:action="@{./deleteLocation}" th:object="${location}"
+          onsubmit="return confirm('Are you sure you want to delete this entry?')">
+
+        Select Location ID :
+        <select th:field="*{locationId}">
+            <option th:each="locationId : ${locationIds}" th:value="${locationId}" th:text="${locationId}"></option>
+        </select>
+        <br>
+
+        <input type="submit" value="Delete Location">
+    </form>
+    <br>
+    <a href="/locationDetails">Return to Location Details</a>
+    <br>
+    <a href="/locationDetails">Cancel</a>
+    <br>
+    <a href="/">GoTo Home Page</a>
+</body>
+</html>

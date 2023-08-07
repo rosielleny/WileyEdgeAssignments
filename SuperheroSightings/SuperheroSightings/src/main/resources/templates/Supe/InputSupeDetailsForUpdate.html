@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Superheroes and Supervillains</title>
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Edit Superheroes and Supervillains</h1>
+    <hr>
+    <form action="/updateSupe" method="post">
+        Enter Supe ID: <input type="text" name="supeId"><br><br>
+        Select field to edit:<br><br>
+        <label>
+            <input type="radio" name="field" value="supeName" onclick="showInput('supeName')"> Name
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="field" value="supePower" onclick="showInput('supePower')"> Power
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="field" value="supeDescription" onclick="showInput('supeDescription')"> Description
+        </label>
+        <br>
+
+        <div id="inputSupeName" class="hidden">
+            <label for="supeNameInput">Enter new Superhero or Supervillain Name:</label>
+            <input type="text" name="newSupeName" id="supeNameInput">
+        </div>
+
+        <div id="inputSupePower" class="hidden">
+            <label for="supePowerInput">Enter new Superhero or Supervillain Power:</label>
+            <input type="text" name="newSupePower" id="supePowerInput">
+        </div>
+
+        <div id="inputSupeDescription" class="hidden">
+            <label for="supeDescriptionInput">Enter new Superhero or Supervillain Description:</label>
+            <input type="text" name="newSupeDescription" id="supeDescriptionInput">
+        </div>
+        <br>
+        <input type="submit" value="Update Superhero or Supervillain">
+    </form>
+
+    <script>
+        function showInput(field) {
+            var inputSupeName = document.getElementById("inputSupeName");
+            var inputSupePower = document.getElementById("inputSupePower");
+            var inputSupeDescription = document.getElementById("inputSupeDescription");
+
+            inputSupeName.style.display = "none";
+            inputSupePower.style.display = "none";
+            inputSupeDescription.style.display = "none";
+
+            if (field === "supeName") {
+                inputSupeName.style.display = "block";
+            } else if (field === "supePower") {
+                inputSupePower.style.display = "block";
+            } else if (field === "supeDescription") {
+                inputSupeDescription.style.display = "block";
+            }
+        }
+    </script>
+
+    <br>
+    <br>
+    <a href="/supesIndex">Back to Superheroes and Supervillains Menu</a>
+    <br>
+    <br>
+    <a href="/">Back to Main Page</a>
+</body>
+</html>

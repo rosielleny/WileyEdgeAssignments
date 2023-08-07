@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Superhero Sightings</title>
+<!-- <link th:href="@{/main.css}" rel="stylesheet"> -->
+</head>
+<body>
+	<h1>Superhero Sightings</h1>
+	<hr>
+	<table border="1">
+		<tr>
+			<th>SightingId</th>
+			<th>Supe</th>
+			<th>Location</th>
+			<th>Coordinates</th>
+			<th>Date</th>
+		</tr>
+			<tr th:each="sighting : ${sightingInfo}">
+			<td th:text="${sighting.sightingId}"></td>
+    		<td th:text="${sighting.supeName}"></td>
+    		<td th:text="${sighting.locationName}"></td>
+   			<td th:text="${sighting.locationCoordinates}"></td>
+    		<td th:text="${sighting.dateSeen}"></td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<a href = "./InputSightingSearchInfo">Search Again</a>
+	<br>
+	<br>
+	<a href="/SightingMain">Back to Sighting Menu</a>
+	<br>
+	<br>
+	<a href="/">Main Page</a>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+    <title>Superhero Management System</title>
+</head>
+
+<body>
+    <h1>Organisation List</h1>
+    <table border = "1">
+        <tr>
+            <th>Organisation ID</th>
+            <th>Organisation Name</th>
+            <th>Description</th>
+            <th>Address</th>
+            <th>Contact Info</th>
+        </tr>
+        <tr th:each = "organisation : ${organisationList}">
+            <td th:text = "${organisation.organisationId}"></td>
+            <td th:text = "${organisation.organisationName}"></td>
+            <td th:text = "${organisation.organisationDescription}"></td>
+            <td th:text = "${organisation.organisationAddress}"></td>
+            <td th:text = "${organisation.organisationContactInfo}"></td>
+        </tr>
+    </table>
+    <br>
+    
+    <a href = "/addOrganisationForm">Add an Organisation Entry</a>
+    <br>
+    <a href = "/updateOrganisationForm">Update an Organisation Entry</a>
+    <br>
+    <a href = "/deleteOrganisationForm">Delete an Organisation Entry</a>
+    <br>
+    <a href = "/organisationDetails">Return to Organisation Details</a>
+    <br>
+    <a href = "/">Return to Main Page</a>
+</body>
+</html>

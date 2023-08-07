@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Superheroes and Supervillains</title>
+</head>
+<body>
+	<h1>Delete Superhero or Supervillain from Database</h1>
+	<hr>
+    <form action="#" th:action="@{./deleteSupe}" th:object="${supe}"
+          onsubmit="return confirm('Are you sure you want to delete this entry?')">
+
+        Select Superhero/villian ID :
+        <select th:field="*{supeId}">
+            <option th:each="supeId : ${supeIds}" th:value="${supeId}" th:text="${supeId}"></option>
+        </select>
+        <br>
+
+        <input type="submit" value="Delete Superhero/villian">
+    </form>
+    <br>
+    <br>
+    <a href="/supesIndex">Back to Superheroes and Supervillains Menu</a>
+    <br>
+    <br>
+    <a href="/">Back to Main Page</a>
+</body>
+</html>

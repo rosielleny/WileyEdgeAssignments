@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Superhero Sightings</title>
+<!-- <link th:href="@{/main.css}" rel="stylesheet"> -->
+</head>
+<body>
+	<h1>Superhero Sightings</h1>
+	<hr>
+	<form action = "/deleteSighting" th.action = "@{./deleteSighting}" th:object = "${sighting}">
+		Select sighting to Delete:
+		<select th:field = "*{sightingId}">
+			<option th:each = "sightingId : ${sightingIds}" th:value = "${sightingId}" th:text = "${sightingId}"></option>
+		</select>
+		<br><br>
+		<input type = "submit" value = "Delete Sighting">
+	</form>
+	<br>
+	<br>
+	<a href="/SightingMain">Back to Sighting Menu</a>
+	<br>
+	<br>
+	<a href="/">Main Page</a>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Superpower</title>
+</head>
+<body>
+    <h1>Delete Superpower</h1>
+    <form action = "/DeleteSuperpower" th.action = "@{/DeleteSuperpower/{supeId}(supeId=${supe.supeId})}" method="post">
+        Select supe's superpower to delete:
+        <select th:field = "*{supeId}">
+            <option th:each = "supeId : ${supeId}" th:value = "${supeId}" th:text = "${supeId}"></option>
+        </select>
+        <br><br>
+        <input type = "submit" value = "Delete">
+    </form>
+    <br><br>
+    <a href="/menuPage">Go To Main Page</a>
+</body>
+</html>

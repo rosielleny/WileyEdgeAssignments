@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add new Superhero or Supervillain to database</title>
+</head>
+<body>
+	<h1>Create New Superhero or Supervillain</h1>
+	<hr>
+	<form action="/newSupe" method="post">
+		<label for="supeNameInput">Superhero or Supervillain Name:</label>
+		<input type="text" id="supeNameInput" name="supeName" required><br><br>
+		<label for="supePowerInput">Superhero or Supervillain Power:</label>
+		<input type="text" id="supePowerInput" name="supePower"><br><br>
+		<label for="supeDescriptionInput">Superhero or Supervillain?</label>
+		<input type="text" id="supeDescriptionInput" name="supeDescription"><br><br>
+		<input type="submit" value="Create Superhero or Supervillain">
+	</form>
+	<br>
+	<br>
+	<a href="/supesIndex">Back to Superheroes and Supervillains Menu</a>
+	<br>
+	<br>
+	<a href="/">Back to Main Page</a>
+</body>
+</html>

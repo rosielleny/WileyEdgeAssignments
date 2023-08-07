@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+    <style type="text/css">
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>SuperHero Sightings</h1>
+    <hr>
+    <h2 th:text="'Welcome to SuperHero Locations !'"></h2>
+    <hr>
+    <form action="/addLocation" method="post" th:object="${location}">
+        <label for="locationId">Enter Location ID:</label>
+        <input type="text" id="locationId" name="locationId" th:field="*{locationId}" required>
+        <br><br>
+        <label for="locationName">Enter Location Name:</label>
+        <input type="text" id="locationName" name="locationName" th:field="*{locationName}" required>
+        <p th:if="${#fields.hasErrors('locationName')}" th:errors="*{locationName}" class="error">Name Error</p>
+        <br><br>
+        <label for="locationDescription">Enter Location Description:</label>
+        <input type="text" id="locationDescription" name="locationDescription" th:field="*{locationDescription}">
+        <br><br>
+        <label for="locationAddress">Enter Location Address:</label>
+        <input type="text" id="locationAddress" name="locationAddress" th:field="*{locationAddress}">
+        <br><br>
+        <label for="locationCoordinates">Enter Location Coordinates:</label>
+        <input type="text" id="locationCoordinates" name="locationCoordinates" th:field="*{locationCoordinates}">
+        <br><br>
+        <input type="submit" value="Save Location">
+    </form>
+    <br><br>
+    <a href="/locationDetails">Return to Location Details</a>
+    <br>
+    <a href="/locationDetails">Cancel</a>
+    <br>
+    <a href="/">GoTo Home Page</a>
+</body>
+</html>

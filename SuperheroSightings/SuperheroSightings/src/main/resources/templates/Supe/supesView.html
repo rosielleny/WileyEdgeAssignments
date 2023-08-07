@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Superheroes and Supervillains</title>
+</head>
+<body>
+	<h1>Superhero and Supervillain Information</h1>
+	<hr>
+	<hr>
+	<table border="1">
+        <tr>
+            <th>Superhero or Supervillain ID</th>
+            <th>Superhero or Supervillain Name</th>
+            <th>Superhero or Supervillain Power</th>
+            <th>Superhero or Supervillain Description</th>
+        </tr>
+        <tr th:each="supe : ${supes}">
+            <td th:text="${supe.supeId}"></td>
+            <td th:text="${supe.supeName}"></td>
+            <td th:text="${supe.supePower}"></td>
+            <td th:text="${supe.supeDescription}"></td>
+        </tr>
+	</table>
+	<br>
+	<br>
+	<a href="/supesIndex">Back to Superheros and Supervillians Menu</a>
+	<br>
+	<br>
+	<a href="/">Back to Main Page</a>
+</body>
+</html>

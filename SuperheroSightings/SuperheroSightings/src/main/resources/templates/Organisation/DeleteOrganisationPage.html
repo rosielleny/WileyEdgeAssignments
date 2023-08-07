@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+    <title>Superhero Management System</title>
+</head>
+
+<body>
+    <h1>Delete an Organisation Entry</h1>
+
+    <form action = "#" th:action = "@{./deleteOrganisation}" th:object = "${organisation}"
+    	onsubmit="return confirm('Are you sure you want to delete this entry?')">
+    	
+        Select Organisation ID :
+        <select th:field = "*{organisationId}">
+            <option th:each = "organisationId : ${organisationIds}" th:value = "${organisationId}" th:text = "${organisationId}"></option>
+        </select>
+        <br>
+
+        <input type = "submit" value = "Delete Organisation">
+    </form>
+    <br>
+    
+    <a href = "/organisationDetails">Cancel</a>
+    <br>
+    <a href = "/">Return to Main Page</a>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+</head>
+<body>
+    <h1>Update Location</h1>
+    <hr>
+    <form action="/updateLocation" method="post">
+        <label for="locationId">Location ID:</label>
+        <select id="locationId" name="locationId" required>
+            <option th:each="locationId : ${locationIds}" th:value="${locationId}" th:text="${locationId}"></option>
+        </select>
+        <br><br>
+        <label for="newLocationName">New Location Name:</label>
+        <input type="text" id="newLocationName" name="newLocationName" required>
+        <br><br>
+        <input type="submit" value="Update Location">
+    </form>
+    <br><br>
+    <a href="/locationDetails">Return to Location Details</a>
+    <br>
+    <a href="/">Back to Main Page</a>
+</body>
+</html>

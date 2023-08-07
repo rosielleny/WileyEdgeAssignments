@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Superhero or Supervillian</title>
+</head>
+<body>
+	<h1>Update Superhero and Supervillian Database Entry</h1>
+	<hr>
+	<form action="/updateSupe" method="POST">
+		<label for="supeId">Superhero or Supervillian ID:</label>
+		<input type="number" id="supeId" name="supeId" required>
+		<br><br>
+		<label for="supeName">Superhero or Supervillian Name:</label>
+		<input type="text" id="supeName" name="supeName">
+		<br><br>
+		<label for="supePower">Superhero or Supervillian Power:</label>
+		<input type="text" id="supePower" name="supePower">
+		<br><br>
+		<label for="supeDescription">Superhero or Supervillian Description:</label>
+		<input type="text" id="supeDescription" name="supeDescription">
+		<br><br>
+		<input type="submit" value="Save Supe">
+	</form>
+	<br>
+	<br>
+	<a href="/supesIndex">Back to Superheros and Supervillians Menu</a>
+	<br>
+	<br>
+	<a href="/">Back to Main Page</a>
+</body>
+</html>
+
